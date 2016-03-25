@@ -25,7 +25,7 @@
   	    </div>
   	    <div id="navbar" class="navbar-collapse collapse">
   	      <ul class="nav navbar-nav navbar-right">
-  	        <li><a class="btn btn-default btn-sm" href="#articlePopup" data-toggle="modal">Log In/Sign Up</a></li>
+  	        <li><a id="#logInButton" class="btn btn-default btn-sm" href="#popupModal" data-toggle="modal" data-login="@login">Log In/Sign Up</a></li>
   	        <li class="dropdown">
   	          <a class="btn navbar-toggle collapsed" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="navbar">
   	          	<span class="icon-bar"></span>
@@ -51,40 +51,40 @@
   		<div class="storyColumn col-md-3">
   			<div class="storyArticle">
   				<header class="articleHeader">
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+  				<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal">article title</a>
   				</header>
   				<!-- image id storyImage(column#)(image#) -->
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage11" class="storyImage" src="http://placehold.it/175x125"></a>
+  				<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal"><img id="storyImage11" class="storyImage" src="http://placehold.it/175x125"></a>
   			</div>
   		</div>
   		<div class="storyColumn col-md-3">
   			<div class="storyArticle">
   				<header class="articleHeader">
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+  				<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal">article title</a>
   				</header>
   				<!-- image id storyImage(column#)(image#) -->
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage21" class="storyImage" src="http://placehold.it/175x125"></a>  			</div>
+  				<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal"><img id="storyImage21" class="storyImage" src="http://placehold.it/175x125"></a>  			</div>
   		</div>
   		<div class="storyColumn col-md-3">
   			<div class="storyArticle">
 	  			<header class="articleHeader">
-	  			<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+	  			<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal">article title</a>
 	  			</header>
 	  			<!-- image id storyImage(column#)(image#) -->
-	  			<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage31" class="storyImage" src="http://placehold.it/175x125"></a>
+	  			<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal"><img id="storyImage31" class="storyImage" src="http://placehold.it/175x125"></a>
   			</div>
   		</div>
   		<div class="storyColumn col-md-3">
   			<div class="storyArticle">
   				<header class="articleHeader">
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+  				<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal">article title</a>
   				</header>
   				<!-- image id storyImage(column#)(image#) -->
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage41" class="storyImage" src="http://placehold.it/175x125"></a>
+  				<a rel="stylesheet" type="text/css" href="#popupModal" data-toggle="modal"><img id="storyImage41" class="storyImage" src="http://placehold.it/175x125"></a>
   			</div>
   		</div>
   	</div>
-         <div id="articlePopup" class="modal">
+         <div id="popupModal" class="modal">
               <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -99,10 +99,11 @@
                       <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                </div>
-            </div>
-		</div>
+             </div>
+		      </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-     <script src="js/app.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/fb.js"></script>
   </body>
 </html>
