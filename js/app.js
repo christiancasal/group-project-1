@@ -13,6 +13,6 @@ $("#articleModal").on('show.bs.modal', function(event){
 });
 
 function createFBLoginHTML(){
-  var fbButton = $('<fb: login-button scope="public_profile,email" onlogin="checkLoginState()"; </fb:login-button><div id="status"></div>')
+  var fbButton = $('<fb: login-button scope="public_profile,email" onlogin="checkLoginState()"</fb:login-button><div id="status"></div>')
   return fbButton;
 }
