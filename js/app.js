@@ -2,7 +2,8 @@ $("#loginModal").on('show.bs.modal', function(event){
   var button = $(event.logInButton) // Button that triggered the modal
   var recipient = button.data('login');
   var fbButton = createFBLoginHTML();
-    $('.modal-title').text('login' + fbButton);
+    $('.modal-title').text('login');
+    $('.modal-body').append(fbButton);
 });
 
 $("#articleModal").on('show.bs.modal', function(event){
