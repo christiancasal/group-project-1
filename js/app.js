@@ -4,6 +4,7 @@ $("#loginModal").on('show.bs.modal', function(event){
   var fbButton = createFBLoginHTML();
     $('.modal-title').text('login');
     $('.modal-body').append(fbButton);
+FB.init()
 FB.login(function(response) {
   // handle the response
   console.log(response);
