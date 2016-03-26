@@ -4,7 +4,15 @@ $("#loginModal").on('show.bs.modal', function(event){
   var fbButton = createFBLoginHTML();
     $('.modal-title').text('login');
     $('.modal-body').append(fbButton);
-FB.init()
+
+FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log('Logged in.');
+  }
+  else {
+    FB.login();
+  }
+});
 FB.login(function(response) {
   // handle the response
   console.log(response);
