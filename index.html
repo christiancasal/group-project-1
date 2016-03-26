@@ -39,7 +39,6 @@
                 console.log('Name: ' + profile.getName());
                 console.log('Image URL: ' + profile.getImageUrl());
                 console.log('Email: ' + profile.getEmail());
-              }
               var xhr = new XMLHttpRequest();
               xhr.open('POST', 'https://yourbackend.example.com/tokensignin');
               xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -47,6 +46,7 @@
                 console.log('Signed in as: ' + xhr.responseText);
               };
               xhr.send('idtoken=' + id_token);
+              }
               </script>
               <a class="btn btn-default" href="#" onclick="signOut();">Sign out</a>
               <script>
