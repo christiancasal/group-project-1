@@ -8,8 +8,10 @@ $("#loginModal").on('show.bs.modal', function(event){
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     console.log('Logged in.');
+    debugger;
   }
   else {
+    debugger;
     FB.login();
   }
 });
