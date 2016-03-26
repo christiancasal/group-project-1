@@ -76,7 +76,7 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
@@ -98,11 +98,6 @@
       the FB.login() function when clicked.
     -->
 
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
-
-    <div id="status">
-    </div>
 
   	<!-- begin navbar -->
   	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -127,7 +122,7 @@
   	          	<span class="icon-bar"></span>
   	          </a>
   	          <ul class="dropdown-menu">
-  	            <li><a href="#">write</a></li>
+  	            <li><a href="#">write content</a></li>
   	            <li><a href="#">explore</a></li>
   	            <li role="separator" class="divider"></li>
   	            <!-- <li class="dropdown-header">Nav header</li> -->
@@ -168,6 +163,12 @@
   			</div>
   		</div>
   		<div class="storyColumn col-md-3">
+        <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
   			<div class="storyArticle">
   				<header class="articleHeader">
   				<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">article title</a>
@@ -186,6 +187,11 @@
                     </div>
                     <div class="modal-body">
                       <p>One fine body…</p>
+                      <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                      </fb:login-button>
+
+                      <div id="status">
+                      </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -194,13 +200,6 @@
                </div>
              </div>
 		      </div>
-          <!-- test FB like button -->
-              <div
-                class="fb-like"
-                data-share="true"
-                data-width="450"
-                data-show-faces="true">
-              </div>
           <div id="articleModal" class="modal article-modal">
                <div class="modal-dialog">
                    <div class="modal-content">
@@ -218,6 +217,7 @@
                 </div>
               </div>
            </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/app.js"></script>
