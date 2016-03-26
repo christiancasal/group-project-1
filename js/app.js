@@ -1,26 +1,26 @@
-$("#loginModal").on('show.bs.modal', function(event){
-  var button = $(event.logInButton) // Button that triggered the modal
-  var recipient = button.data('login');
-  var fbButton = createFBLoginHTML();
-    $('.modal-title').text('login');
-    $('.modal-body').append(fbButton);
-
-FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    console.log('Logged in.');
-    debugger;
-  }
-  else {
-    debugger;
-    FB.login();
-  }
-});
-FB.login(function(response) {
-  // handle the response
-  console.log(response);
-}, {scope: 'public_profile,email'});
-
-});
+// $("#loginModal").on('show.bs.modal', function(event){
+//   var button = $(event.logInButton) // Button that triggered the modal
+//   var recipient = button.data('login');
+//   var fbButton = createFBLoginHTML();
+//     $('.modal-title').text('login');
+//     $('.modal-body').append(fbButton);
+//
+// FB.getLoginStatus(function(response) {
+//   if (response.status === 'connected') {
+//     console.log('Logged in.');
+//     debugger;
+//   }
+//   else {
+//     debugger;
+//     FB.login();
+//   }
+// });
+// FB.login(function(response) {
+//   // handle the response
+//   console.log(response);
+// }, {scope: 'public_profile,email'});
+//
+// });
 
 $("#articleModal").on('show.bs.modal', function(event){
   var button = $(event.logInButton) // Button that triggered the modal

@@ -11,6 +11,9 @@
 
   </head>
   <body>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="581813671753-9srl16v9biprncs061852avsmv899lav.apps.googleusercontent.com">
+
     <script>
       // This is called with the results from from FB.getLoginStatus().
       function statusChangeCallback(response) {
@@ -46,7 +49,7 @@
 
       window.fbAsyncInit = function() {
       FB.init({
-        appId      : '555169054647227',
+        appId      : '555169054647227',//production id
         cookie     : true,  // enable cookies to allow the server to access
                             // the session
         xfbml      : true,  // parse social plugins on this page
@@ -113,6 +116,8 @@
   	      <a class="navbar-brand" href="#">project: title</a>
   	    </div>
   	    <div id="navbar" class="navbar-collapse collapse">
+          <div class="g-signin2 nav navbar-nav navbar-right" data-onsuccess="onSignIn"></div>
+
   	      <ul class="nav navbar-nav navbar-right">
   	        <li><a id="#logInButton" class="btn btn-default btn-sm" href="#loginModal" data-toggle="modal" data-login="@login">Log In/Sign Up</a></li>
   	        <li class="dropdown">
