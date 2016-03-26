@@ -4,6 +4,11 @@ $("#loginModal").on('show.bs.modal', function(event){
   var fbButton = createFBLoginHTML();
     $('.modal-title').text('login');
     $('.modal-body').append(fbButton);
+FB.login(function(response) {
+  // handle the response
+  console.log(response);
+}, {scope: 'public_profile,email'});
+
 });
 
 $("#articleModal").on('show.bs.modal', function(event){
