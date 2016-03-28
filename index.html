@@ -11,9 +11,30 @@
 
   </head>
   <body>
+    <!-- Firebase Reference -->
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     <!-- google authentication -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="581813671753-9srl16v9biprncs061852avsmv899lav.apps.googleusercontent.com">
+
+    <!-- facebook authenication -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '555169054647227',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+</script>
 
   	<!-- begin navbar -->
   	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -29,7 +50,9 @@
   	    </div>
   	    <div id="navbar" class="navbar-collapse collapse">
   	      <ul class="nav navbar-nav navbar-right">
-  	        <li><a id="#logInButton" class="g-signin2" data-onsuccess="onSignIn"></a></li>
+            <li><a id="#logInButton" class="g-signin2 btn" data-onsuccess="onSignIn">Sign In</a></li>
+
+  	        <!-- <li><a id="#logInButton" class="g-signin2" data-onsuccess="onSignIn"></a></li>
             <li>
               <script type="text/javascript">
               function onSignIn(googleUser) {
@@ -47,16 +70,17 @@
               };
               xhr.send('idtoken=' + id_token);
               }
-              </script>
+              </script> -->
+              <li>
               <a class="btn btn-default" href="#" onclick="signOut();">Sign out</a>
-              <script>
+              <!-- <script>
                 function signOut() {
                   var auth2 = gapi.auth2.getAuthInstance();
                   auth2.signOut().then(function () {
                     console.log('User signed out.');
                   });
                 }
-              </script>
+              </script> -->
 
             </li>
   	        <li class="dropdown">
