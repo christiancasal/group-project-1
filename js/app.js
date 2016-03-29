@@ -11,7 +11,7 @@ function checkFB(){
       var userData = ref.child(userDataLocation);
       userData.push(authData);
       userDBKey = userData.key();
-      userData = JSON.parse(localStorage.getItem(authData))
+      userData = JSON.parse(localStorage.getItem("authData"))
     }
   });
 }
