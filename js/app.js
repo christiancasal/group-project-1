@@ -8,6 +8,8 @@ function checkFB(){
     } else {
       console.log("Authenticated successfully with payload:", authData);
     }
+    remember: "sessionOnly",
+    scope: "public_profile,email,user_likes"
   });
 }
 $("#articleModal").on('show.bs.modal', function(event){
