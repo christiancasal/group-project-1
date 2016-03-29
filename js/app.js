@@ -1,13 +1,15 @@
-$(function(){
-  $('#logInButton').on('click', function(){
-    var ref = new Firebase("https://google-login-read-people.firebaseio.com");
-    ref.authWithOAuthPopup("facebook", function(error, authData) {
-      if (error) {
-        console.log("Login Failed!", error);
-      } else {
-        console.log("Authenticated successfully with payload:", authData);
-      }
-    });
+// $(function(){
+//
+// });
+$('#logInButton').on('click', function(){
+  console.log('hello');
+  var ref = new Firebase("https://google-login-read-people.firebaseio.com");
+  ref.authWithOAuthPopup("facebook", function(error, authData) {
+    if (error) {
+      console.log("Login Failed!", error);
+    } else {
+      console.log("Authenticated successfully with payload:", authData);
+    }
   });
 });
 
