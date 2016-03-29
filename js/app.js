@@ -1,7 +1,6 @@
+var ref = new Firebase("https://google-login-read-people.firebaseio.com");
+
 function checkFB(){
-  var hello = "hello";
-  console.log(hello);
-  var ref = new Firebase("https://google-login-read-people.firebaseio.com");
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
@@ -10,6 +9,17 @@ function checkFB(){
     }
   });
 }
+
+$(function(){
+  $('#logInFB').on('click', function(){
+    var hello = "hello";
+    console.log(hello);
+  });
+  $('#logOutFB').on('click', function(){
+    var hello = "hello";
+    console.log(hello);
+  });
+});
 $("#articleModal").on('show.bs.modal', function(event){
   var button = $(event.articleModal) // Button that triggered the modal
   var recipient = button.data('login');
