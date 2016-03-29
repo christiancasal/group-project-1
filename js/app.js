@@ -1,5 +1,5 @@
 var ref = new Firebase("https://google-login-read-people.firebaseio.com");
-
+var userDataLocation = "user-data"
 function checkFB(){
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
@@ -7,6 +7,8 @@ function checkFB(){
     } else {
       console.log("Authenticated successfully with payload:", authData);
       localStorage.setItem("authData", authData)
+      var userData = ref.child(userDataLocation)
+      userData.push(authData)
     }
   });
 }
