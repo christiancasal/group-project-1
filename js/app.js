@@ -10,8 +10,7 @@ function checkFB(){
       localStorage.setItem("authData", authData);
       var userData = ref.child(userDataLocation);
       userDataRef = userData.push(authData);
-      userDBKey = userDataRef;
-      userLocalData = JSON.parse(localStorage.getItem("authData"))
+      userDBKey = userDataRef.key();
     }
   });
 }
