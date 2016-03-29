@@ -1,6 +1,7 @@
 var ref = new Firebase("https://google-login-read-people.firebaseio.com");
-var userDataLocation = "user-data"
-var userLocalData, userDBKey, userDataRef;
+var userList = "user-data"
+var userLocalData, userDBKey, userGetKey;
+
 function checkFB(){
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
@@ -8,9 +9,13 @@ function checkFB(){
     } else {
       console.log("Authenticated successfully with payload:", authData);
       localStorage.setItem("authData", authData);
-      var userData = ref.child(userDataLocation);
-      userDataRef = userData.push(authData);
-      userDBKey = userDataRef.key();
+      var userData = ref.child(userList);
+      userGetKey = userData.push(authData);
+      userDBKey = userGetKey.key();
+
+      userData.once('value', function(response){
+        console.log(response);
+      });
     }
   });
 }
@@ -23,6 +28,7 @@ $(function(){
   $('#logOutFB').on('click', function(){
     var hello = "hello";
     console.log(hello);
+    ref.logout();
   });
 });
 $("#articleModal").on('show.bs.modal', function(event){
