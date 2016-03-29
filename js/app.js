@@ -1,5 +1,4 @@
 function checkFB(){
-debugger;
   var hello = "hello";
   console.log(hello);
   var ref = new Firebase("https://google-login-read-people.firebaseio.com");
