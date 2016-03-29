@@ -1,17 +1,21 @@
 var ref = new Firebase("https://google-login-read-people.firebaseio.com");
 var userDataLocation = "user-data"
+var userData, userDBKey;
 function checkFB(){
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
     } else {
       console.log("Authenticated successfully with payload:", authData);
-      localStorage.setItem("authData", authData)
-      var userData = ref.child(userDataLocation)
-      userData.push(authData)
+      localStorage.setItem("authData", authData);
+      var userData = ref.child(userDataLocation);
+      userData.push(authData);
+      userDBKey = userData.key();
+      userData = JSON.parse(localStorage.getItem(authData))
     }
   });
 }
+console.log(userData);
 
 $(function(){
   $('#logInFB').on('click', function(){
