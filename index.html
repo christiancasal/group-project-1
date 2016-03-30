@@ -11,6 +11,94 @@
 
   </head>
   <body>
+    <script>
+      // This is called with the results from from FB.getLoginStatus().
+      function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        // The response object is returned with a status field that lets the
+        // app know the current login status of the person.
+        // Full docs on the response object can be found in the documentation
+        // for FB.getLoginStatus().
+        if (response.status === 'connected') {
+          // Logged into your app and Facebook.
+          testAPI();
+        } else if (response.status === 'not_authorized') {
+          // The person is logged into Facebook, but not your app.
+          document.getElementById('status').innerHTML = 'Please log ' +
+            'into this app.';
+        } else {
+          // The person is not logged into Facebook, so we're not sure if
+          // they are logged into this app or not.
+          document.getElementById('status').innerHTML = 'Please log ' +
+            'into Facebook.';
+        }
+      }
+
+      // This function is called when someone finishes with the Login
+      // Button.  See the onlogin handler attached to it in the sample
+      // code below.
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+
+      window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '555169054647227',
+        cookie     : true,  // enable cookies to allow the server to access
+                            // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.5' // use graph api version 2.5
+      });
+
+      // Now that we've initialized the JavaScript SDK, we call
+      // FB.getLoginStatus().  This function gets the state of the
+      // person visiting this page and can return one of three states to
+      // the callback you provide.  They can be:
+      //
+      // 1. Logged into your app ('connected')
+      // 2. Logged into Facebook, but not your app ('not_authorized')
+      // 3. Not logged into Facebook and can't tell if they are logged into
+      //    your app or not.
+      //
+      // These three cases are handled in the callback function.
+
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+
+      };
+
+      // Load the SDK asynchronously
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      // Here we run a very simple test of the Graph API after login is
+      // successful.  See statusChangeCallback() for when this call is made.
+      function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
+      }
+    </script>
+
+    <!--
+      Below we include the Login Button social plugin. This button uses
+      the JavaScript SDK to present a graphical Login button that triggers
+      the FB.login() function when clicked.
+    -->
+
+
   	<!-- begin navbar -->
   	<nav class="navbar navbar-inverse navbar-fixed-top">
   	  <div class="container">
@@ -25,8 +113,7 @@
   	    </div>
   	    <div id="navbar" class="navbar-collapse collapse">
   	      <ul class="nav navbar-nav navbar-right">
-  	        <li><a class="btn btn-default btn-sm">Log In</a></li>
-  	        <li><a class="btn btn-default btn-sm">Sign up</a></li>
+  	        <li><a id="#logInButton" class="btn btn-default btn-sm" href="#loginModal" data-toggle="modal" data-login="@login">Log In/Sign Up</a></li>
   	        <li class="dropdown">
   	          <a class="btn navbar-toggle collapsed" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="navbar">
   	          	<span class="icon-bar"></span>
@@ -35,16 +122,11 @@
   	          	<span class="icon-bar"></span>
   	          </a>
   	          <ul class="dropdown-menu">
-  	            <li><a href="#">something</a></li>
-  	            <li><a href="#">more</a></li>
-  	            <li><a href="#">stuff</a></li>
-
-
-  	            <!--<li role="separator" class="divider"></li>
-  	            <li class="dropdown-header">Nav header</li> -->
-  	            
-  	            <li><a href="#">here</a></li>
-  	            <li><a href="#">woo</a></li>
+  	            <li><a href="#">write content</a></li>
+  	            <li><a href="#">explore</a></li>
+  	            <li role="separator" class="divider"></li>
+  	            <!-- <li class="dropdown-header">Nav header</li> -->
+                <li><a href="#">logout</a></li>
   	          </ul>
   	        </li>
   	      </ul>
@@ -55,42 +137,54 @@
   	<!-- begin main site -->
   	<div id="fullSiteContainer" class="container">
   		<div class="storyColumn col-md-3">
-  			<div class="storyArticle col-md-12 row">
+  			<div class="storyArticle">
   				<header class="articleHeader">
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+  				<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">article title</a>
   				</header>
   				<!-- image id storyImage(column#)(image#) -->
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage11" class="storyImage" src="http://placehold.it/175x125"></a>
+  				<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal"><img id="storyImage11" class="storyImage" src="https://placehold.it/175x125"></a>
   			</div>
   		</div>
   		<div class="storyColumn col-md-3">
-  			<div class="storyArticle col-md-12 row">
+  			<div class="storyArticle">
   				<header class="articleHeader">
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+  				<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">article title</a>
   				</header>
   				<!-- image id storyImage(column#)(image#) -->
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage21" class="storyImage" src="http://placehold.it/175x125"></a>  			</div>
+  				<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal"><img id="storyImage21" class="storyImage" src="https://placehold.it/175x125"></a>  			</div>
   		</div>
   		<div class="storyColumn col-md-3">
-  			<div class="storyArticle col-md-12 row">
+  			<div class="storyArticle">
 	  			<header class="articleHeader">
-	  			<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+	  			<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">article title</a>
 	  			</header>
 	  			<!-- image id storyImage(column#)(image#) -->
-	  			<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage31" class="storyImage" src="http://placehold.it/175x125"></a>
+	  			<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal"><img id="storyImage31" class="storyImage" src="https://placehold.it/175x125"></a>
   			</div>
   		</div>
   		<div class="storyColumn col-md-3">
-  			<div class="storyArticle col-md-12 row">
+        <!-- fb login -->
+        <div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+
+        <div id="status">
+        </div>
+  			<div class="storyArticle">
   				<header class="articleHeader">
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal">article title</a>
+  				<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">article title</a>
   				</header>
   				<!-- image id storyImage(column#)(image#) -->
-  				<a rel="stylesheet" type="text/css" href="#articlePopup" data-toggle="modal"><img id="storyImage41" class="storyImage" src="http://placehold.it/175x125"></a>
+  				<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal"><img id="storyImage41" class="storyImage" src="https://placehold.it/175x125"></a>
   			</div>
   		</div>
   	</div>
-         <div id="articlePopup" class="modal">
+         <div id="loginModal" class="modal login-modal">
               <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -98,17 +192,40 @@
                       <h4 class="modal-title">Modal title</h4>
                     </div>
                     <div class="modal-body">
-                      <p>One fine body…</p>
+                      <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                      </fb:login-button>
+
+                      <div id="status">
+                      </div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                </div>
-            </div>
-		</div>
+             </div>
+		      </div>
+          <div id="articleModal" class="modal article-modal">
+               <div class="modal-dialog">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                       <h4 class="modal-title">Modal title</h4>
+                     </div>
+                     <div class="modal-body">
+                       <p>One fine body…</p>
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                       <button type="button" class="btn btn-primary">Save changes</button>
+                     </div>
+                </div>
+              </div>
+           </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-     <script src="js/app.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/fb.js"></script>
   </body>
 </html>

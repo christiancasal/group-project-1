@@ -35,16 +35,9 @@
                 <span class="icon-bar"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">something</a></li>
-                <li><a href="#">more</a></li>
-                <li><a href="#">stuff</a></li>
-
-
-                <!--<li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li> -->
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Logout</a></li>
                 
-                <li><a href="#">here</a></li>
-                <li><a href="#">woo</a></li>
               </ul>
             </li>
           </ul>
@@ -54,23 +47,51 @@
     <!-- end of navbar -->
 <div class="container">
   
-  <form role="form">
-    <div class="form-group">
+<!--   <form role="form">
+ -->    <div class="form-group">
       <label for="title">Title</label>
       <input type="title" class="form-control" id="title" placeholder="Write a great title">
     </div>
     <div class="form-group">
       <label for="pic/vid">Add Media</label>
-      <button type="Add Media" class="btn btn-default">Add Picture</button>
-      <button type="Add Media" class="btn btn-default">Add Video</button> 
-      <button type="Add Media" class="btn btn-default">Add Link</button>
-    </div> 
+      <button type="Add Media" class="btn btn-default" id='addpic'>Add Picture</button>
+      <button type="Add Media" class="btn btn-default"id='addvid'>Add Video</button> 
+      <button type="Add Media" class="btn btn-default"id='addlink'>Add Link</button>
+    </div>  
+    <div id='input-box-container' class='form-group'></div>
     <div class="form-group">
-  <label for="comment">Your Story</label>
-  <textarea class="form-control" rows="5"  placeholder=' Start Typing....' id="content"></textarea>
+
+  <label for="comment">Story</label>
+  <textarea class="form-control" rows="5" id="content" placeholder='Write it beautiful...'></textarea>
 </div>
-    <button type="submit" id='publish' class="btn btn-default">Publish My Story</button>
-  </form>
+<a rel="stylesheet" type="text/css" href="#previewModal" data-toggle="modal" class="btn btn-default">Preview My Story</a>
+
+  
+
+
+</div> 
+<!-- Modal -->
+<!-- <div id="articleModal" class="modal preview-modal">
+ --><div id="previewModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Publish My Story</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
    
