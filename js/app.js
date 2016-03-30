@@ -2,15 +2,24 @@
 var ref = new Firebase("https://google-login-read-people.firebaseio.com");
 var userList = "user-data"
 var userLocalData, userDBKey, userGetKey;
+var userLoggedIn = false;
 
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 function checkFB(){
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+  
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
     } else {
       console.log("Authenticated successfully with payload:", authData);
+
+      userLoggedIn = true;
+      signInButtonToggle();
+
       localStorage.setItem("authData", authData);
       var userData = ref.child(userList);
       userGetKey = userData.push(authData);
@@ -50,6 +59,11 @@ $("#articleModal").on('show.bs.modal', function(event){
   $('.modal-title').text('write your story');
 });
 });
+
+//cc - if the user is signed in turn the button to a sign out
+function signInButtonToggle(){
+
+}
 
 //firebase link bm
 //var fireit = new Firebase('https://readpeople.firebaseio.com/');
