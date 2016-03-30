@@ -49,7 +49,7 @@ $("#articleModal").on('show.bs.modal', function(event){
   var recipient = button.data('login');
   $('.modal-title').text('write your story');
 });
-}
+});
 
 //firebase link bm
 //var fireit = new Firebase('https://readpeople.firebaseio.com/');
