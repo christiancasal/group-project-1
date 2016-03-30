@@ -34,7 +34,7 @@
          js.src = "https://connect.facebook.net/en_US/sdk.js";
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
-</script>
+    </script>
 
   	<!-- begin navbar -->
   	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -51,36 +51,8 @@
   	    <div id="navbar" class="navbar-collapse collapse">
   	      <ul class="nav navbar-nav navbar-right">
             <li><a id="logInFB" onclick='checkFB()' class="btn btn-default">Sign In</a></li>
-
-  	        <!-- <li><a id="#logInButton" class="g-signin2" data-onsuccess="onSignIn"></a></li>
-            <li>
-              <script type="text/javascript">
-              function onSignIn(googleUser) {
-                var id_token = googleUser.getAuthResponse().id_token;
-                console.log(id_token);
-                var profile = googleUser.getBasicProfile();
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail());
-              var xhr = new XMLHttpRequest();
-              xhr.open('POST', 'https://yourbackend.example.com/tokensignin');
-              xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-              xhr.onload = function() {
-                console.log('Signed in as: ' + xhr.responseText);
-              };
-              xhr.send('idtoken=' + id_token);
-              }
-              </script> -->
               <li>
               <a id="logOutFB" class="btn btn-default">Sign out</a>
-              <!-- <script>
-                function signOut() {
-                  var auth2 = gapi.auth2.getAuthInstance();
-                  auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                  });
-                }
-              </script> -->
 
             </li>
   	        <li class="dropdown">
