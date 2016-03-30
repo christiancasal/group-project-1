@@ -55,8 +55,8 @@ $("#articleModal").on('show.bs.modal', function(event){
 //var fireit = new Firebase('https://readpeople.firebaseio.com/');
 
 //grabs user input bm
-var titleinput=$('#title').val().trim();
-var storyinput=$('#content').val().trim();
+//var titleinput=$('#title').val().trim();
+//var storyinput=$('#content').val().trim();
 
 
 
