@@ -54,9 +54,8 @@ $('#logInToggle').on('click',function(){
     else{
       ref.unauth();
       $(this[0]).text('Sign In');
-    });
     }
-  });
+});
 //cc - if the user is signed in turn the button to a sign out
 
 //firebase link bm
