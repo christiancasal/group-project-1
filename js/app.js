@@ -4,6 +4,7 @@ var userList = "user-data"
 var userLocalData, userDBKey, userGetKey;
 var userLoggedIn = false;
 
+var hello;
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 function checkFB(){
