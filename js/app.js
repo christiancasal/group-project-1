@@ -1,7 +1,7 @@
 //cc - declares firebase references and data placeholders
 var ref = new Firebase("https://google-login-read-people.firebaseio.com");
 var userList = "user-data"
-var userLocalData, userDBKey, userGetKey;
+var userLocalData, userDBKey, userGetKey, userAccessToken;
 var userLoggedIn = false;
 
 var hello;
@@ -25,6 +25,7 @@ function checkFB(){
       //get user data
       userData.once('value', function(response){
         console.log(response.child(userDBKey).val());
+        userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
       });
     }
   });
@@ -52,12 +53,17 @@ $('#logInToggle').on('click',function(){
       checkFB();
     }
     else{
-    FB.logout(function(response) {
-  // user is now logged out
-    console.log(response);
+      function fbLogoutUser() {
+          FB.getLoginStatus(function(response) {
+              if (response && response.status === 'connected') {
+                  FB.logout(function(response) {
+                      document.location.reload();
+                  });
+              }
+          });
+      }
+    }
 });
-}
-})
 //cc - if the user is signed in turn the button to a sign out
 function signOutButtonToggle(){
 
