@@ -54,7 +54,6 @@ $("#articleModal").on('show.bs.modal', function(event){
 aloha(document.querySelector("#content")); 
 
 for (var command in aloha.ui.commands) {
-  console.log(command);
     $('.action-' + command).on(
         'click',
         aloha.ui.command(aloha.ui.commands[command])
@@ -104,7 +103,6 @@ $("#previewModal").on('show.bs.modal', function(event){
     + "'>" + $('#storyLink').val() +"</a></div>");
     // "<a href='" + $('#storyLink').val() + "'>Click here for stuff</a>"
   }
-  $('div.modal-body').empty();
   $('.modal-body').append($("#content").html());
 });
 
