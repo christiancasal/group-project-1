@@ -27,9 +27,6 @@ function checkFB(){
         userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
       });
     }
-  }{
-    remember: "sessionOnly",
-    scope: "email"
   });
 }
 
