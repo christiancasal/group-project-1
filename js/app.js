@@ -47,7 +47,7 @@ $("#articleModal").on('show.bs.modal', function(event){
 });
 
 $('#logInToggle').on('click',function(){
-    console.log($('#logInToggle').text().val())
+    $('#logInToggle').text('Sign In');
 })
 //cc - if the user is signed in turn the button to a sign out
 function signOutButtonToggle(){
