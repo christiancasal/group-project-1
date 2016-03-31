@@ -50,6 +50,19 @@ $("#articleModal").on('show.bs.modal', function(event){
   $('.modal-title').text('write your story');
 });
 });
+//bm aloha change test 
+aloha(document.querySelector("#content")); 
+
+for (var command in aloha.ui.commands) {
+  console.log(command);
+    $('.action-' + command).on(
+        'click',
+        aloha.ui.command(aloha.ui.commands[command])
+    );
+}
+
+
+//  $('#title'))
 
 //firebase link bm
 //var fireit = new Firebase('https://readpeople.firebaseio.com/');
@@ -91,7 +104,8 @@ $("#previewModal").on('show.bs.modal', function(event){
     + "'>" + $('#storyLink').val() +"</a></div>");
     // "<a href='" + $('#storyLink').val() + "'>Click here for stuff</a>"
   }
-  $('.modal-body').append($("#content").val());
+  $('div.modal-body').empty();
+  $('.modal-body').append($("#content").html());
 });
 
 //add picture link on writecontent.html bm
