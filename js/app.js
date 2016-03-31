@@ -7,31 +7,32 @@ var userLoggedIn = false;
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 function checkFB(){
+
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
 
-  ref.authWithOAuthPopup("facebook", function(error, authData) {
-    if (error) {
-      console.log("Login Failed!", error);
-    } else {
-      console.log("Authenticated successfully with payload:", authData);
-
-      userLoggedIn = true;
-      signInButtonToggle();
-
-      localStorage.setItem("authData", authData);
-      var userData = ref.child(userList);
-      userGetKey = userData.push(authData);
-      userDBKey = userGetKey.key();
-
-      //get user data
-      userData.once('value', function(response){
-        console.log(response.child(userDBKey).val());
-      });
-    }
-  });
-}
+  // ref.authWithOAuthPopup("facebook", function(error, authData) {
+  //   if (error) {
+  //     console.log("Login Failed!", error);
+  //   } else {
+  //     console.log("Authenticated successfully with payload:", authData);
+  //
+  //     userLoggedIn = true;
+  //     signInButtonToggle();
+  //
+  //     localStorage.setItem("authData", authData);
+  //     var userData = ref.child(userList);
+  //     userGetKey = userData.push(authData);
+  //     userDBKey = userGetKey.key();
+  //
+  //     //get user data
+  //     userData.once('value', function(response){
+  //       console.log(response.child(userDBKey).val());
+  //     });
+  //   }
+  // });
+// }
 
 //cc - on click actions for login/logout
 $(function(){
