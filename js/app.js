@@ -4,7 +4,6 @@ var userList = "user-data"
 var userLocalData, userDBKey, userGetKey, userAccessToken;
 var userLoggedIn = false;
 
-var hello;
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 function checkFB(){
@@ -28,6 +27,9 @@ function checkFB(){
         userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
       });
     }
+  }{
+    remember: "sessionOnly",
+    scope: "email"
   });
 }
 
@@ -53,19 +55,12 @@ $('#logInToggle').on('click',function(){
       checkFB();
     }
     else{
-    FB.getLoginStatus(function(response) {
-      if (response && response.status === 'connected') {
-        FB.logout(function(response) {
-          document.location.reload();
-          });
-        }
+      ref.unauth();
+      $(this[0]).text('Sign In');
     });
     }
   });
 //cc - if the user is signed in turn the button to a sign out
-function signOutButtonToggle(){
-
-}
 
 //firebase link bm
 //var fireit = new Firebase('https://readpeople.firebaseio.com/');
