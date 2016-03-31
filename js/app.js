@@ -14,7 +14,7 @@ function checkFB(){
       console.log("Authenticated successfully with payload:", authData);
 
       userLoggedIn = true;
-      signInButtonToggle();
+      $('#logInToggle').text('Sign Out');
 
       localStorage.setItem("authData", authData);
       var userData = ref.child(userList);
@@ -30,15 +30,6 @@ function checkFB(){
 }
 
 //cc - on click actions for login/logout
-$(function(){
-  $('#logInFB').on('click', function(){
-    var hello = "hello";
-    console.log(hello);
-  });
-  $('#logOutFB').on('click', function(){
-    var hello = "hello";
-    console.log(hello);
-  });
 
 $("#loginModal").on('show.bs.modal', function(event){
   var button = $(event.logInButton) // Button that triggered the modal
@@ -56,8 +47,11 @@ $("#articleModal").on('show.bs.modal', function(event){
 });
 });
 
+$('#logInToggle').on('click',function(){
+    console.log($('#logInToggle').text().val())
+})
 //cc - if the user is signed in turn the button to a sign out
-function signInButtonToggle(){
+function signOutButtonToggle(){
 
 }
 
