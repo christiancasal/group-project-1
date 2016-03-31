@@ -7,54 +7,26 @@ var userLoggedIn = false;
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 function checkFB(){
+  ref.authWithOAuthPopup("facebook", function(error, authData) {
+    if (error) {
+      console.log("Login Failed!", error);
+    } else {
+      console.log("Authenticated successfully with payload:", authData);
 
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-  function statusChangeCallback(response) {
-      console.log('statusChangeCallback');
-      console.log(response);
-      // The response object is returned with a status field that lets the
-      // app know the current login status of the person.
-      // Full docs on the response object can be found in the documentation
-      // for FB.getLoginStatus().
-      if (response.status === 'connected') {
-        // Logged into your app and Facebook.
-        testAPI();
-      } else if (response.status === 'not_authorized') {
-        // The person is logged into Facebook, but not your app.
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into this app.';
-      } else {
-        // The person is not logged into Facebook, so we're not sure if
-        // they are logged into this app or not.
-        document.getElementById('status').innerHTML = 'Please log ' +
-          'into Facebook.';
-      }
+      userLoggedIn = true;
+      signInButtonToggle();
+
+      localStorage.setItem("authData", authData);
+      var userData = ref.child(userList);
+      userGetKey = userData.push(authData);
+      userDBKey = userGetKey.key();
+
+      //get user data
+      userData.once('value', function(response){
+        console.log(response.child(userDBKey).val());
+      });
     }
-
-  // ref.authWithOAuthPopup("facebook", function(error, authData) {
-  //   if (error) {
-  //     console.log("Login Failed!", error);
-  //   } else {
-  //     console.log("Authenticated successfully with payload:", authData);
-  //
-  //     userLoggedIn = true;
-  //     signInButtonToggle();
-  // 
-  //     localStorage.setItem("authData", authData);
-  //     var userData = ref.child(userList);
-  //     userGetKey = userData.push(authData);
-  //     userDBKey = userGetKey.key();
-  //
-  //     //get user data
-  //     userData.once('value', function(response){
-  //       console.log(response.child(userDBKey).val());
-  //     });
-  //   }
-  // });
+  });
 }
 
 //cc - on click actions for login/logout
