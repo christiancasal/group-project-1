@@ -48,6 +48,10 @@ $("#articleModal").on('show.bs.modal', function(event){
 
 $('#logInToggle').on('click',function(){
     $('#logInToggle').text('Sign In');
+    FB.logout(function(response) {
+  // user is now logged out
+    console.log(response);
+});
 })
 //cc - if the user is signed in turn the button to a sign out
 function signOutButtonToggle(){
