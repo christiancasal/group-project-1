@@ -7,6 +7,12 @@ var userLoggedIn = false;
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 function checkFB(){
+
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
   function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
@@ -28,56 +34,29 @@ function checkFB(){
           'into Facebook.';
       }
     }
-          function checkLoginState() {
-      FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
+
+  ref.authWithOAuthPopup("facebook", function(error, authData) {
+    if (error) {
+      console.log("Login Failed!", error);
+    } else {
+      console.log("Authenticated successfully with payload:", authData);
+
+      userLoggedIn = true;
+      signInButtonToggle();
+
+      localStorage.setItem("authData", authData);
+      var userData = ref.child(userList);
+      userGetKey = userData.push(authData);
+      userDBKey = userGetKey.key();
+
+      //get user data
+      userData.once('value', function(response){
+        console.log(response.child(userDBKey).val());
       });
     }
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '555169054647227',
-        xfbml      : true,
-        version    : 'v2.5'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }
-     (document, 'script', 'facebook-jssdk'));
-     function testAPI() {
-      console.log('Welcome!  Fetching your information.... ');
-      FB.api('/me', function(response) {
-        console.log('Successful login for: ' + response.name);
-        document.getElementById('status').innerHTML =
-          'Thanks for logging in, ' + response.name + '!';
-      });
-  }
-  // ref.authWithOAuthPopup("facebook", function(error, authData) {
-  //   if (error) {
-  //     console.log("Login Failed!", error);
-  //   } else {
-  //     console.log("Authenticated successfully with payload:", authData);
-  //
-  //     userLoggedIn = true;
-  //     signInButtonToggle();
-  //
-  //     localStorage.setItem("authData", authData);
-  //     var userData = ref.child(userList);
-  //     userGetKey = userData.push(authData);
-  //     userDBKey = userGetKey.key();
-  //
-  //     //get user data
-  //     userData.once('value', function(response){
-  //       console.log(response.child(userDBKey).val());
-  //     });
-  //   }
-  // });
+  });
 }
+
 //cc - on click actions for login/logout
 $(function(){
   $('#logInFB').on('click', function(){
