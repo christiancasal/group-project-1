@@ -19,32 +19,6 @@
 
     <!-- facebook authenication -->
     <script>
-    // function statusChangeCallback(response) {
-    //     console.log('statusChangeCallback');
-    //     console.log(response);
-    //     // The response object is returned with a status field that lets the
-    //     // app know the current login status of the person.
-    //     // Full docs on the response object can be found in the documentation
-    //     // for FB.getLoginStatus().
-    //     if (response.status === 'connected') {
-    //       // Logged into your app and Facebook.
-    //       testAPI();
-    //     } else if (response.status === 'not_authorized') {
-    //       // The person is logged into Facebook, but not your app.
-    //       document.getElementById('status').innerHTML = 'Please log ' +
-    //         'into this app.';
-    //     } else {
-    //       // The person is not logged into Facebook, so we're not sure if
-    //       // they are logged into this app or not.
-    //       document.getElementById('status').innerHTML = 'Please log ' +
-    //         'into Facebook.';
-    //     }
-    //   }
-    //   function checkLoginState() {
-    //     FB.getLoginStatus(function(response) {
-    //       statusChangeCallback(response);
-    //     });
-    //   }
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '555169054647227',
@@ -85,10 +59,8 @@
   	    </div>
   	    <div id="navbar" class="navbar-collapse collapse">
   	      <ul class="nav navbar-nav navbar-right">
-            <li><a id="logInFB" onclick='checkFB()' class="btn btn-default">Sign In</a></li>
+            <li><a id="logInToggle" onclick='checkFB()' class="btn btn-default">Sign In</a></li>
               <li>
-              <a id="logOutFB" class="btn btn-default">Sign out</a>
-
             </li>
   	        <li class="dropdown">
   	          <a class="btn navbar-toggle collapsed" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="navbar">
