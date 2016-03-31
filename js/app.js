@@ -45,7 +45,6 @@ $("#articleModal").on('show.bs.modal', function(event){
   var recipient = button.data('login');
   $('.modal-title').text('write your story');
 });
-});
 
 $('#logInToggle').on('click',function(){
     console.log($('#logInToggle').text().val())
