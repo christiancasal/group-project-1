@@ -53,17 +53,15 @@ $('#logInToggle').on('click',function(){
       checkFB();
     }
     else{
-      function fbLogoutUser() {
-          FB.getLoginStatus(function(response) {
-              if (response && response.status === 'connected') {
-                  FB.logout(function(response) {
-                      document.location.reload();
-                  });
-              }
+    FB.getLoginStatus(function(response) {
+      if (response && response.status === 'connected') {
+        FB.logout(function(response) {
+          document.location.reload();
           });
-      }
+        }
+    });
     }
-});
+  });
 //cc - if the user is signed in turn the button to a sign out
 function signOutButtonToggle(){
 
