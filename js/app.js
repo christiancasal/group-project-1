@@ -10,7 +10,7 @@ function checkFB(){
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
-  
+
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
