@@ -15,7 +15,6 @@ $("#articleModal").on('show.bs.modal', function(event){
 $('#logInToggle').on('click',function(){
     if($(this)[0].text == "Sign In"){
       loginFB();
-      $('#logInToggle').attr('onclick', 'logoutFB()');
     }
     else if($(this)[0].text == "Sign Out"){
       logoutFB();
