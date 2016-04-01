@@ -64,27 +64,41 @@ for (var command in aloha.ui.commands) {
 //  $('#title'))
 
 //firebase link bm
-//var fireit = new Firebase('https://readpeople.firebaseio.com/');
+var fireit = new Firebase('https://readpeople.firebaseio.com/');
+
+//click publish story button bm
+$("#publishButton").on("click", function(){
+console.log('this sentence right here')
+
 
 //grabs user input bm
-//var titleinput=$('#title').val().trim();
-//var storyinput=$('#content').val().trim();
+var titleinput=$('#title').val().trim(); 
+var imginput=$('#addpic')
+var vidinput=$('addvid')
+var linkinput=$('addlink')
+var storyinput=$('#content').val().trim();
 
 
 
-//creates local tmeporary object for holding user input bm
-// var db={
-//   title:
-//   imgLink
-//   videoLink:
-//   webLink:
-//   story:
-//}
+//creates local temporary object for holding user input bm
+ var db={
+  title: titleinput
+  imgLink: imginput
+  videoLink: vidinput
+  webLink: linkinput
+  story: storyinput
+} 
+//console.log database 
+console.log(db.title);
+console.log(db.imgLink);
+console.log(db.videoLink);
+console.log(db.webLink);
+console.log(db.story);
 // push to firebase bm
-//fireit.push(db)
+fireit.push(db);
 //alert bm
-//alert('You have published your story')
-
+alert('You have published your story')
+}
 
 // preview story modal on writecontent.html bm
 $("#previewModal").on('show.bs.modal', function(event){
@@ -93,16 +107,16 @@ $("#previewModal").on('show.bs.modal', function(event){
   $('.modal-title').text($("#title").val());
 
   if($("#storyPic").val()){
-    $('.modal-body').append("<img src='"+ $("#storyPic").val() +"' width=200>")
+    $('.modal-body').html("<img src='"+ $("#storyPic").val() +"' width=200>")
   }
   if($("#storyVideo").val()){
-    $('.modal-body').append($("#storyVideo").val())
+    $('.modal-body').html($("#storyVideo").val())
   }
   if($("#storyLink").val()){
-  $('.modal-body').append("<div><a href='" + $('#storyLink').val()
+  $('.modal-body').html("<div><a href='" + $('#storyLink').val()
     + "'>" + $('#storyLink').val() +"</a></div>");
     // "<a href='" + $('#storyLink').val() + "'>Click here for stuff</a>"
-  }
+  } 
   $('.modal-body').append($("#content").html());
 });
 
