@@ -74,8 +74,8 @@ $("#publishButton").on("click", function(){
 //grabs user input bm
 var titleinput=$('#title').val().trim(); 
 var imginput=$('#addpic').val().trim();
-var vidinput=$('addvid').val().trim();
-var linkinput=$('addlink').val().trim();
+var vidinput=$('#addvid').val().trim();
+var linkinput=$('#addlink').val().trim();
 var storyinput=$('#content').val().trim();
 
 
