@@ -45,19 +45,13 @@ function loginFB(){
       $('#logInToggle').text(authData.facebook.displayName);
       $('#logInToggle').css('margin-top',' ');
       $('#logInToggle').prepend(newImg);
-
+      //cc - get user data
       localStorage.setItem("authData", authData);
       var userData = ref.child(userList);
       userGetKey = userData.push(authData);
       userDBKey = userGetKey.key();
       console.log(authData.facebook.profileImageURL);
-      //get user data
 
-      // userData.once('value', function(response){
-      //   console.log(response.child(userDBKey).val());
-      //   userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
-      //   userProfPicURL = response.child(userDBKey).child('facebook').child('profileImageURL').val()
-      // });
     }
   },
   {
@@ -66,7 +60,7 @@ function loginFB(){
   });
 }
 //bm aloha change test
-aloha(document.querySelector("#content")); 
+aloha(document.querySelector("#content"));
 
 for (var command in aloha.ui.commands) {
     $('.action-' + command).on(
