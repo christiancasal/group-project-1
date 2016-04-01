@@ -15,6 +15,7 @@ $("#articleModal").on('show.bs.modal', function(event){
 $('#logInToggle').on('click',function(){
     if($(this)[0].text == "Sign In"){
       loginFB();
+      $('#logInToggle').attr('onclick', 'logoutFB()');
     }
     else if($(this)[0].text == "Sign Out"){
       logoutFB();
@@ -39,7 +40,12 @@ function loginFB(){
       console.log("Authenticated successfully with payload:", authData);
 
       userLoggedIn = true;
-      $('#logInToggle').text('Sign Out');
+
+      var newImg = $('<img>');
+      newImg.attr('id', 'userProfPic');
+      newImg.attr('src', authData.facebook.profileImageURL);
+      $('#logInToggle').text(authData.facebook.displayName);
+      $('#logInToggle').prepend(newImg);
 
       localStorage.setItem("authData", authData);
       var userData = ref.child(userList);
@@ -47,11 +53,12 @@ function loginFB(){
       userDBKey = userGetKey.key();
       console.log(authData.facebook.profileImageURL);
       //get user data
-      userData.once('value', function(response){
-        console.log(response.child(userDBKey).val());
-        userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
-        userProfPicURL = response.child(userDBKey).child('facebook').child('profileImageURL').val()
-      });
+
+      // userData.once('value', function(response){
+      //   console.log(response.child(userDBKey).val());
+      //   userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
+      //   userProfPicURL = response.child(userDBKey).child('facebook').child('profileImageURL').val()
+      // });
     }
   },
   {
