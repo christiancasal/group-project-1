@@ -26,16 +26,6 @@ $('#logInToggle').on('click',function(){
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 
-// function checkFB(){
-//     console.log("heelo");
-//       if($(this)[0].text == "Sign In"){
-//         loginFB();
-//       }
-//       else if($(this)[0].text == "Sign Out"){
-//         logoutFB();
-//       }
-// }
-
 function logoutFB(){
   ref.unauth();
   $('#logInToggle').text('Sign In');
