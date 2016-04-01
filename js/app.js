@@ -4,9 +4,35 @@ var userList = "user-data"
 var userLocalData, userDBKey, userGetKey, userAccessToken;
 var userLoggedIn = false;
 
+
+//cc - modal for popping out articles
+$("#articleModal").on('show.bs.modal', function(event){
+  var button = $(event.articleModal) // Button that triggered the modal
+  var recipient = button.data('login');
+  $('.modal-title').text('write your story');
+});
+
+$('#logInToggle').on('click',function(){
+      checkFB();
+});
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
+
 function checkFB(){
+      if($(this)[0].text == "Sign In"){
+        loginFB();
+      }
+      else if($(this)[0].text == "Sign Out"){
+        logoutFB();
+      }
+}
+
+function logoutFB(){
+  ref.unauth();
+  $('#logInToggle').text('Sign Out');
+}
+
+function loginFB(){
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
@@ -29,34 +55,6 @@ function checkFB(){
     }
   });
 }
-
-//cc - on click actions for login/logout
-
-// $("#loginModal").on('show.bs.modal', function(event){
-//   var button = $(event.logInButton) // Button that triggered the modal
-//   var recipient = button.data('login');
-//   var fbButton = createFBLoginHTML();
-//     $('.modal-title').text('login');
-//     $('.modal-body').append(fbButton);
-// });
-
-//cc - modal for popping out articles
-$("#articleModal").on('show.bs.modal', function(event){
-  var button = $(event.articleModal) // Button that triggered the modal
-  var recipient = button.data('login');
-  $('.modal-title').text('write your story');
-});
-
-$('#logInToggle').on('click',function(){
-    if($(this)[0].text == "Sign In"){
-      checkFB();
-    }
-    else if($(this)[0].text == "Sign Out"){
-      ref.unauth();
-
-    }
-});
-//cc - if the user is signed in turn the button to a sign out
 
 //firebase link bm
 //var fireit = new Firebase('https://readpeople.firebaseio.com/');
