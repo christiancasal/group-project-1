@@ -32,13 +32,13 @@ function checkFB(){
 
 //cc - on click actions for login/logout
 
-$("#loginModal").on('show.bs.modal', function(event){
-  var button = $(event.logInButton) // Button that triggered the modal
-  var recipient = button.data('login');
-  var fbButton = createFBLoginHTML();
-    $('.modal-title').text('login');
-    $('.modal-body').append(fbButton);
-});
+// $("#loginModal").on('show.bs.modal', function(event){
+//   var button = $(event.logInButton) // Button that triggered the modal
+//   var recipient = button.data('login');
+//   var fbButton = createFBLoginHTML();
+//     $('.modal-title').text('login');
+//     $('.modal-body').append(fbButton);
+// });
 
 //cc - modal for popping out articles
 $("#articleModal").on('show.bs.modal', function(event){
@@ -53,6 +53,7 @@ $('#logInToggle').on('click',function(){
     }
     else if($(this)[0].text == "Sign Out"){
       ref.unauth();
+
     }
 });
 //cc - if the user is signed in turn the button to a sign out
