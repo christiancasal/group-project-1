@@ -21,6 +21,7 @@ $('#logInToggle').on('click',function(){
 //reference, and firebase for long term refernce
 
 function checkFB(){
+    console.log("heelo");
       if($(this)[0].text == "Sign In"){
         loginFB();
       }
