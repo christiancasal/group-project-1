@@ -43,7 +43,7 @@ function loginFB(){
       newImg.attr('id', 'userProfPic');
       newImg.attr('src', authData.facebook.profileImageURL);
       $('#logInToggle').text(authData.facebook.displayName);
-      $('#logInToggle').style('margin-top',' ');
+      $('#logInToggle').css('margin-top',' ');
       $('#logInToggle').prepend(newImg);
 
       localStorage.setItem("authData", authData);
