@@ -98,7 +98,7 @@ console.log(db.story);
 fireit.push(db);
 //alert bm
 alert('You have published your story')
-}
+})
 
 // preview story modal on writecontent.html bm
 $("#previewModal").on('show.bs.modal', function(event){
