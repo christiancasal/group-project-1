@@ -82,10 +82,10 @@ var storyinput=$('#content').val().trim();
 
 //creates local temporary object for holding user input bm
  var db={
-  title: titleinput
-  imgLink: imginput
-  videoLink: vidinput
-  webLink: linkinput
+  title: titleinput,
+  imgLink: imginput,
+  videoLink: vidinput,
+  webLink: linkinput,
   story: storyinput
 } 
 //console.log database 
