@@ -38,7 +38,7 @@ $('#logInToggle').on('click',function(){
 
 function logoutFB(){
   ref.unauth();
-  $('#logInToggle').text('Sign Out');
+  $('#logInToggle').text('Sign In');
 }
 
 function loginFB(){
