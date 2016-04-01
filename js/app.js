@@ -68,14 +68,14 @@ var fireit = new Firebase('https://readpeople.firebaseio.com/');
 
 //click publish story button bm
 $("#publishButton").on("click", function(){
-console.log('this sentence right here')
+
 
 
 //grabs user input bm
 var titleinput=$('#title').val().trim(); 
-var imginput=$('#addpic')
-var vidinput=$('addvid')
-var linkinput=$('addlink')
+var imginput=$('#addpic').val().trim();
+var vidinput=$('addvid').val().trim();
+var linkinput=$('addlink').val().trim();
 var storyinput=$('#content').val().trim();
 
 
