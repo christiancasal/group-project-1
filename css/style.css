@@ -28,6 +28,7 @@ a:hover{
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
 }
-#userProfPic{
-
+#userProfPic {
+    max-width: 45px;
+    padding-right: 10px;
 }
