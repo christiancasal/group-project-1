@@ -66,7 +66,7 @@ function loginFB(){
   });
 }
 //bm aloha change test
-aloha(document.querySelector("#content"));
+aloha(document.querySelector("#content")); 
 
 for (var command in aloha.ui.commands) {
     $('.action-' + command).on(
@@ -111,6 +111,26 @@ console.log(db.story);
 fireit.push(db);
 //alert bm
 alert('You have published your story')
+})
+
+// bm create firebase event for adding todatabase and appending onto index.html page
+fireit.on("child_added", function(childSnapshot, prevChildKey){
+
+   console.log(childSnapshot.val())
+
+   //Store everything into a variable
+   var titleinput= childSnapshot.val().title;
+   var imginput= childSnapshot.val().imgLink;
+   var vidinput= childSnapshot.val().videoLink;
+   var linkinput= childSnapshot.val().webLink;
+   var storyinput= childSnapshot.val().story;
+
+   //Story Content
+   console.log(titleinput);
+   console.log(imginput);
+   console.log(vidinput);
+   console.log(linkinput);
+   console.log(storyinput);
 })
 
 // preview story modal on writecontent.html bm
