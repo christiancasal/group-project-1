@@ -15,9 +15,6 @@ $("#articleModal").on('show.bs.modal', function(event){
 $('#logInToggle').on('click',function(){
 
       console.log("heelo");
-      checkFB();
-
-      console.log("heelo");
         if($(this)[0].text == "Sign In"){
           loginFB();
         }
