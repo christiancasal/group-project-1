@@ -26,7 +26,7 @@ $('#logInToggle').on('click',function(){
 
 function logoutFB(){
   ref.unauth();
-  ref.remove(userDBKey);
+  ref.child(userList).remove(userDBKey);
   $('#logInToggle').text('Sign In');
 }
 
