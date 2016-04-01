@@ -106,7 +106,6 @@ for (var command in aloha.ui.commands) {
 
 //  $('#title'))
 
-
 //firebase link bm
 var fireit = new Firebase('https://readpeople.firebaseio.com/');
 
