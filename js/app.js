@@ -13,14 +13,12 @@ $("#articleModal").on('show.bs.modal', function(event){
 });
 
 $('#logInToggle').on('click',function(){
-
-      console.log("heelo");
-        if($(this)[0].text == "Sign In"){
-          loginFB();
-        }
-        else if($(this)[0].text == "Sign Out"){
-          logoutFB();
-        }
+    if($(this)[0].text == "Sign In"){
+      loginFB();
+    }
+    else if($(this)[0].text == "Sign Out"){
+      logoutFB();
+    }
 });
 
 //cc - facebook authentication, push data to localStorage for short term
