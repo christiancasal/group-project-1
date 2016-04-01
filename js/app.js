@@ -1,7 +1,7 @@
 //cc - declares firebase references and data placeholders
 var ref = new Firebase("https://google-login-read-people.firebaseio.com");
 var userList = "user-data"
-var userLocalData, userDBKey, userGetKey, userAccessToken;
+var userLocalData, userDBKey, userGetKey, userAccessToken,userProfPicURL;
 var userLoggedIn = false;
 
 
@@ -45,13 +45,18 @@ function loginFB(){
       var userData = ref.child(userList);
       userGetKey = userData.push(authData);
       userDBKey = userGetKey.key();
-
+      console.log(authData.facebook.profileImageURL);
       //get user data
       userData.once('value', function(response){
         console.log(response.child(userDBKey).val());
         userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
+        userProfPicURL = response.child(userDBKey).child('facebook').child('profileImageURL').val()
       });
     }
+  },
+  {
+    remember: "sessionOnly",
+    scope: "email,user_likes"
   });
 }
 
