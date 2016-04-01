@@ -13,8 +13,10 @@ $("#articleModal").on('show.bs.modal', function(event){
 });
 
 $('#logInToggle').on('click',function(){
+      console.log("heelo");
       checkFB();
 });
+
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 
