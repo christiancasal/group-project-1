@@ -28,7 +28,17 @@ a:hover{
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out;
 }
+<<<<<<< HEAD
+#userProfPic {
+    max-width: 45px;
+    padding-right: 10px;
+}
+#logInToggle{
+		margin-top: 17px;
+}
+=======
 #loginButton{
 	
 } 
 
+>>>>>>> master

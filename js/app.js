@@ -1,29 +1,73 @@
 //cc - declares firebase references and data placeholders
 var ref = new Firebase("https://google-login-read-people.firebaseio.com");
 var userList = "user-data"
-var userLocalData, userDBKey, userGetKey;
+var userLocalData, userDBKey, userGetKey, userAccessToken,userProfPicURL;
+var userLoggedIn = false;
+
+
+//cc - modal for popping out articles
+$("#articleModal").on('show.bs.modal', function(event){
+  var button = $(event.articleModal) // Button that triggered the modal
+  var recipient = button.data('login');
+  $('.modal-title').text('write your story');
+});
+
+$('#logInToggle').on('click',function(){
+    if($(this)[0].text == "Sign In"){
+      loginFB();
+    }
+    else if($(this)[0].text == "Sign Out"){
+      logoutFB();
+    }
+});
 
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
-function checkFB(){
+
+function logoutFB(){
+  ref.unauth();
+  ref.child(userList).child(userDBKey).remove();
+  $('#logInToggle').text('Sign In');
+}
+
+function loginFB(){
   ref.authWithOAuthPopup("facebook", function(error, authData) {
     if (error) {
       console.log("Login Failed!", error);
     } else {
       console.log("Authenticated successfully with payload:", authData);
+
+      userLoggedIn = true;
+
+      var newImg = $('<img>');
+      newImg.attr('id', 'userProfPic');
+      newImg.attr('src', authData.facebook.profileImageURL);
+      $('#logInToggle').text(authData.facebook.displayName);
+      $('#logInToggle').css('margin-top',' ');
+      $('#logInToggle').prepend(newImg);
+
       localStorage.setItem("authData", authData);
       var userData = ref.child(userList);
       userGetKey = userData.push(authData);
       userDBKey = userGetKey.key();
-
+      console.log(authData.facebook.profileImageURL);
       //get user data
-      userData.once('value', function(response){
-        console.log(response.child(userDBKey).val());
-      });
+
+      // userData.once('value', function(response){
+      //   console.log(response.child(userDBKey).val());
+      //   userAccessToken = response.child(userDBKey).child('facebook').child('accessToken').val()
+      //   userProfPicURL = response.child(userDBKey).child('facebook').child('profileImageURL').val()
+      // });
     }
+  },
+  {
+    remember: "sessionOnly",
+    scope: "email,user_likes"
   });
 }
 
+<<<<<<< HEAD
+=======
 //cc - on click actions for login/logout
 $(function(){
   $('#logInFB').on('click', function(){
@@ -63,6 +107,7 @@ for (var command in aloha.ui.commands) {
 
 //  $('#title'))
 
+>>>>>>> master
 //firebase link bm
 var fireit = new Firebase('https://readpeople.firebaseio.com/');
 
