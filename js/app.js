@@ -51,9 +51,8 @@ $('#logInToggle').on('click',function(){
     if($(this)[0].text == "Sign In"){
       checkFB();
     }
-    else{
+    else if($(this)[0].text == "Sign Out"){
       ref.unauth();
-      $(this[0]).text('Sign In');
     }
 });
 //cc - if the user is signed in turn the button to a sign out
