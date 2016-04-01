@@ -7,16 +7,42 @@
     <title>ReadPeople</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet"> 
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> 
-    <script src="http://www.alohaeditor.org/download/aloha.min.js"></script> 
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="http://www.alohaeditor.org/download/aloha.min.js"></script>
     <!--sweetalertshiznit-->
     <script src="js/sweetalert2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/sweetalert2.css">
 
   </head>
   <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '555169054647227',
+          xfbml      : true,
+          version    : 'v2.5'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }
+       (document, 'script', 'facebook-jssdk'));
+       function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
+        }
+    </script>
     <!-- begin navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -31,8 +57,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a class="btn btn-default btn-sm">Log In</a></li>
-            <li><a class="btn btn-default btn-sm">Sign up</a></li>
+            <li><a id="logInToggle" class="btn btn-default">Sign In</a></li>
+              <li>
             <li class="dropdown">
               <a class="btn navbar-toggle collapsed" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="navbar">
                 <span class="icon-bar"></span>
@@ -42,8 +68,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">Logout</a></li>
-                
+                <li><a href="#" onclick="logoutFB()">logout</a></li>
               </ul>
             </li>
           </ul>
@@ -52,7 +77,7 @@
     </nav>
     <!-- end of navbar -->
 <div class="container">
-  
+
 <!--   <form role="form">
  -->    <div class="form-group">
       <label for="title">Title</label>
@@ -61,25 +86,25 @@
     <div class="form-group">
       <label for="pic/vid">Add Media</label>
       <button type="Add Media" class="btn btn-default" id='addpic'>Add Picture</button>
-      <button type="Add Media" class="btn btn-default"id='addvid'>Add Video</button> 
+      <button type="Add Media" class="btn btn-default"id='addvid'>Add Video</button>
       <button type="Add Media" class="btn btn-default"id='addlink'>Add Link</button>
-    </div>  
+    </div>
     <div id='input-box-container' class='form-group'></div>
     <div class="form-group">
-  <label for="comment">Story</label> 
+  <label for="comment">Story</label>
   <button class="action-bold">B</button>
   <button class="action-italic">I</button>
   <button class="action-underline">U</button>
   <button class="action-unformat">✘</button>
   <!-- <textarea class="form-control" rows="5" id="content" placeholder='Write it beautiful...'></textarea> -->
-   <div class="form-control" id="content" style="min-height: 250px; width: 100%; overflow:auto" contenteditable='true'></div> 
+   <div class="form-control" id="content" style="min-height: 250px; width: 100%; overflow:auto" contenteditable='true'></div>
 </div>
 <a rel="stylesheet" type="text/css" href="#previewModal" data-toggle="modal" class="btn btn-default">Preview My Story</a>
 
-  
 
 
-</div> 
+
+</div>
 <!-- Modal -->
 <!-- <div id="articleModal" class="modal preview-modal">
  --><div id="previewModal" class="modal fade" role="dialog">
@@ -103,7 +128,7 @@
   </div>
 </div>
 
-   
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
      <script src="js/app.js"></script>
