@@ -13,22 +13,31 @@ $("#articleModal").on('show.bs.modal', function(event){
 });
 
 $('#logInToggle').on('click',function(){
+
       console.log("heelo");
       checkFB();
+
+      console.log("heelo");
+        if($(this)[0].text == "Sign In"){
+          loginFB();
+        }
+        else if($(this)[0].text == "Sign Out"){
+          logoutFB();
+        }
 });
 
 //cc - facebook authentication, push data to localStorage for short term
 //reference, and firebase for long term refernce
 
-function checkFB(){
-    console.log("heelo");
-      if($(this)[0].text == "Sign In"){
-        loginFB();
-      }
-      else if($(this)[0].text == "Sign Out"){
-        logoutFB();
-      }
-}
+// function checkFB(){
+//     console.log("heelo");
+//       if($(this)[0].text == "Sign In"){
+//         loginFB();
+//       }
+//       else if($(this)[0].text == "Sign Out"){
+//         logoutFB();
+//       }
+// }
 
 function logoutFB(){
   ref.unauth();
