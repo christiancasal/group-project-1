@@ -7,7 +7,13 @@
     <title>ReadPeople</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> 
+    <script src="http://www.alohaeditor.org/download/aloha.min.js"></script> 
+    <!--sweetalertshiznit-->
+    <script src="js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/sweetalert2.css">
 
   </head>
   <body>
@@ -21,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">ReadPeople</a>
+          <a class="navbar-brand" href="index.html">ReadPeople</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -35,7 +41,7 @@
                 <span class="icon-bar"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#">Logout</a></li>
                 
               </ul>
@@ -60,8 +66,13 @@
     </div>  
     <div id='input-box-container' class='form-group'></div>
     <div class="form-group">
-  <label for="comment">Story</label>
-  <textarea class="form-control" rows="5" id="content" placeholder='Write it beautiful...'></textarea>
+  <label for="comment">Story</label> 
+  <button class="action-bold">B</button>
+  <button class="action-italic">I</button>
+  <button class="action-underline">U</button>
+  <button class="action-unformat">✘</button>
+  <!-- <textarea class="form-control" rows="5" id="content" placeholder='Write it beautiful...'></textarea> -->
+   <div class="form-control" id="content" style="min-height: 250px; width: 100%; overflow:auto" contenteditable='true'></div> 
 </div>
 <a rel="stylesheet" type="text/css" href="#previewModal" data-toggle="modal" class="btn btn-default">Preview My Story</a>
 
@@ -80,11 +91,11 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"></h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style='width:100%; overflow:scroll; max-height:400px'>
         <p></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Publish My Story</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id='publishButton'>Publish My Story</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
