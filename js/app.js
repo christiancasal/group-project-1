@@ -48,10 +48,34 @@ $(document).ready(function(){
 
 
   //cc - modal for popping out articles
-  $("#articleModal").on('show.bs.modal', function(event){
+  $("#articleModal1").on('show.bs.modal', function(event){
     var button = $(event.articleModal) // Button that triggered the modal
     var recipient = button.data('login');
-    $('.modal-title').text('write your story');
+    $('.modal-title1').text('The Robot');
+  });
+
+  $("#articleModal2").on('show.bs.modal', function(event){
+    var button = $(event.articleModal) // Button that triggered the modal
+    var recipient = button.data('login');
+    $('.modal-title2').text('A Fight');
+  });
+
+  $("#articleModal3").on('show.bs.modal', function(event){
+    var button = $(event.articleModal) // Button that triggered the modal
+    var recipient = button.data('login');
+    $('.modal-title3').text('Cut Off');
+  });
+
+  $("#articleModal4").on('show.bs.modal', function(event){
+    var button = $(event.articleModal) // Button that triggered the modal
+    var recipient = button.data('login');
+    $('.modal-title4').text('Pajamas');
+  });
+
+  $("#articleModal5").on('show.bs.modal', function(event){
+    var button = $(event.articleModal) // Button that triggered the modal
+    var recipient = button.data('login');
+    $('.modal-title5').text('The Hand And The Jar');
   });
 
   $('#logInToggle').on('click',function(){
