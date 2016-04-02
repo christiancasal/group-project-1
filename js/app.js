@@ -66,6 +66,9 @@ $(document).ready(function(){
   //cc - facebook authentication, push data to localStorage for short term
   //reference, and firebase for long term refernce
 
+$('#ddSO').on('click',function(){
+  logoutFB();
+});
   function logoutFB(){
     ref.unauth();
     ref.child(userList).child(userDBKey).remove();
