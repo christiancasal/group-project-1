@@ -1,5 +1,7 @@
 body{
-    padding-top: 70px;
+	padding-top: 70px;
+	width: 75%;
+	margin:auto;
 }
 a{
     color: inherit;
@@ -20,6 +22,9 @@ a:hover{
     word-wrap: break-word;
 }
 #articleModal{
+}
+#fullSiteContainer{
+
 }
 .storyImage{
     width:100%;

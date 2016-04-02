@@ -28,7 +28,7 @@ $(document).ready(function(){
             '#f69078' // salmon
         ];
         var color = colors[parseInt(Math.random() * (colors.length - 1), 10)];
-        
+
         $('.funky')
             .css('transition', 'background-color 15s')
             .css('background-color', color);
@@ -38,7 +38,7 @@ $(document).ready(function(){
             colorcycle();
             setInterval(colorcycle, 2000);
         }, 1000);
-
+});
 
   //cc - declares firebase references and data placeholders
   var ref = new Firebase("https://google-login-read-people.firebaseio.com");
@@ -90,6 +90,9 @@ $(document).ready(function(){
   //cc - facebook authentication, push data to localStorage for short term
   //reference, and firebase for long term refernce
 
+$('#ddSO').on('click',function(){
+  logoutFB();
+});
   function logoutFB(){
     ref.unauth();
     ref.child(userList).child(userDBKey).remove();
@@ -170,8 +173,12 @@ $(document).ready(function(){
   // push to firebase bm
   fireit.push(db);
   //alert bm
-  alert('You have published your story')
-  })
+  swal(
+ 'Great!',
+ 'You published your story!',
+ 'success'
+)
+});
 
   // bm create firebase event for adding todatabase and appending onto index.html page
   fireit.on("child_added", function(childSnapshot, prevChildKey){
@@ -191,6 +198,21 @@ $(document).ready(function(){
      console.log(vidinput);
      console.log(linkinput);
      console.log(storyinput);
+
+     var sendArticleDiv = $('<div class="storyArticle holder">')
+     var sendArticleHeader = $('<header class="articleHeader">')
+     var sendArticleAnchor = $('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">')
+
+     var sendArticleAnchorImg = $('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal"><img id="storyImage31" class="storyImage image ajax">')
+
+     sendArticleAnchor.text(titleinput);
+     sendArticleAnchorImg.attr('src', imginput);
+
+     sendArticleHeader.append(sendArticleAnchor);
+     sendArticleDiv.append(sendArticleHeader);
+     sendArticleDiv.append(sendArticleAnchorImg);
+
+     $('#column1').append(sendArticleDiv);
   })
 
   // preview story modal on writecontent.html bm
@@ -245,5 +267,3 @@ $(document).ready(function(){
     inputBoxContainer.append(div);
     return false;
   });
-
-});
