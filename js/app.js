@@ -114,46 +114,96 @@ $("#publishButton").on("click", function(){
 
 
 
-//grabs user input bm
-var titleinput=$('#title').val().trim(); 
-var imginput=$('#addpic').val().trim();
-var vidinput=$('#addvid').val().trim();
-var linkinput=$('#addlink').val().trim();
-var storyinput=$('#content').val().trim();
+  //grabs user input bm
+  var titleinput=$('#title').val().trim(); 
+  var imginput=$('#addpic').val().trim();
+  var vidinput=$('#addvid').val().trim();
+  var linkinput=$('#addlink').val().trim();
+  var storyinput=$('#content').text();
 
 
 
 //creates local temporary object for holding user input bm
- var db={
-  title: titleinput,
-  imgLink: imginput,
-  videoLink: vidinput,
-  webLink: linkinput,
-  story: storyinput
-} 
+  var db={
+    title: titleinput,
+    imgLink: imginput,
+    videoLink: vidinput,
+    webLink: linkinput,
+    story: storyinput
+  } 
 //console.log database 
-console.log(db.title);
-console.log(db.imgLink);
-console.log(db.videoLink);
-console.log(db.webLink);
-console.log(db.story);
+  console.log(db.title);
+  console.log(db.imgLink);
+  console.log(db.videoLink);
+  console.log(db.webLink);
+  console.log(db.story);
 // push to firebase bm
-fireit.push(db);
+  fireit.push(db);
 //alert bm
-alert('You have published your story')
+  alert('You have published your story') 
+
+  setTimeout(function(){
+    window.location= "index.html"
+    window.onload = function(){
+    console.log('help')
+        // creating divs and header to go in fullSiteContainer
+    var storyColumnDiv = $('<div class="storyColumn col-md-3">'); //append storyArticleDiv to this
+    var storyArticleDiv= $('<div class="storyArticle">'); //append storyHeader to this
+    var storyHeader = $('<header  class="articleHeader">');
+    // create anchor to nest in header
+    makeElem('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">', titleinput, storyHeader); 
+    //create image
+    var image = $('<img>').attr("src", imginput);
+    //image.addClass("images");
+    // creat modal
+    //makeElem('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">', )
+    //<img id="storyImage11" class="storyImage" src="https://placehold.it/175x125">
+    // appending
+     var titleinput =localStorage.getItem("titleinput"); 
+     var imginput = localStorage.getItem("imginput");
+     var vidinput = localStorage.getItem("vidinput");
+     var linkinput = localStorage.getItem("linkinput");
+     var storyinput = localStorage.getItem("storyinput");
+
+    storyArticleDiv.append(storyHeader);
+    storyArticleDiv.append(image);
+    storyColumnDiv.append(storyArticleDiv);
+    var $articleCol = $('#column1');
+    
+    $articleCol.append(storyColumnDiv); 
+    $articleCol.append(titleinput); 
+    $articleCol.append(imginput);
+    $articleCol.append(vidinput);
+    $articleCol.append(linkinput);
+    $articleCol.append(storyinput); 
+    } 
+  }, 1000);
+
 }) 
 
+// make new element function
+function makeElem(type, data, elemToappendTo){
+    var childElem = $(type).text(data);
+    elemToappendTo.append(childElem);
+}
+
 // bm create firebase event for adding todatabase and appending onto index.html page
-fireit.on("child_added", function(childSnapshot, prevChildKey){
+fireit.on("child_added", function(childSnapshot){
 
    console.log(childSnapshot.val()) 
 
    //Store everything into a variable 
-   var titleinput= childSnapshot.val().title; 
+   var titleinput=childSnapshot.val().title; 
    var imginput= childSnapshot.val().imgLink;
    var vidinput= childSnapshot.val().videoLink;
    var linkinput= childSnapshot.val().webLink;
    var storyinput= childSnapshot.val().story; 
+console.log("store all the teh things");
+   localStorage.setItem("titleinput", titleinput)
+   localStorage.setItem("imginput", imginput)
+   localStorage.setItem("vidinput", vidinput)
+   localStorage.setItem("linkinput", linkinput)
+   localStorage.setItem("storyinput", storyinput)
 
    //Story Content 
    console.log(titleinput);
@@ -161,7 +211,45 @@ fireit.on("child_added", function(childSnapshot, prevChildKey){
    console.log(vidinput);
    console.log(linkinput);
    console.log(storyinput);
-})
+
+
+});
+  // new div and append 
+  function createStoryArticle(){
+    // creating divs and header to go in fullSiteContainer
+    var storyColumnDiv = $('<div class="storyColumn col-md-3">'); //append storyArticleDiv to this
+    var storyArticleDiv= $('<div class="storyArticle">'); //append storyHeader to this
+    var storyHeader = $('<header  class="articleHeader">');
+    // create anchor to nest in header
+    makeElem('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">', titleinput, storyHeader); 
+    //create image
+    var image = $('<img>').attr("src", imginput);
+    //image.addClass("images");
+    // creat modal
+    //makeElem('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">', )
+    //<img id="storyImage11" class="storyImage" src="https://placehold.it/175x125">
+    // appending
+     var titleinput =localStorage.getItem("titleinput"); 
+     var imginput = localStorage.getItem("imginput");
+     var vidinput = localStorage.getItem("vidinput");
+     var linkinput = localStorage.getItem("linkinput");
+     var storyinput = localStorage.getItem("storyinput");
+
+    storyArticleDiv.append(storyHeader);
+    storyArticleDiv.append(image);
+    storyColumnDiv.append(storyArticleDiv);
+    var $articleCol = $('#column1');
+    
+    $articleCol.append(storyColumnDiv); 
+    $articleCol.append(titleinput); 
+    $articleCol.append(imginput);
+    $articleCol.append(vidinput);
+    $articleCol.append(linkinput);
+    $articleCol.append(storyinput); 
+
+
+
+  }
 
 // preview story modal on writecontent.html bm
 $("#previewModal").on('show.bs.modal', function(event){
@@ -215,3 +303,8 @@ $('#addlink').on('click', function(){
   inputBoxContainer.append(div);
   return false;
 });
+
+//why am i broken?
+console.log("start here")
+createStoryArticle();
+console.log("end here")
