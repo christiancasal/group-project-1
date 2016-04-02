@@ -28,7 +28,7 @@ $(document).ready(function(){
             '#f69078' // salmon
         ];
         var color = colors[parseInt(Math.random() * (colors.length - 1), 10)];
-        
+
         $('.funky')
             .css('transition', 'background-color 15s')
             .css('background-color', color);
@@ -167,6 +167,21 @@ $(document).ready(function(){
      console.log(vidinput);
      console.log(linkinput);
      console.log(storyinput);
+
+     var sendArticleDiv = $('<div class="storyArticle holder">')
+     var sendArticleHeader = $('<header class="articleHeader">')
+     var sendArticleAnchor = $('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal">')
+
+     var sendArticleAnchorImg = $('<a rel="stylesheet" type="text/css" href="#articleModal" data-toggle="modal"><img id="storyImage31" class="storyImage image ajax">')
+
+     sendArticleAnchor.text(titleinput);
+     sendArticleAnchorImg.attr('src', imginput);
+
+     sendArticleHeader.append(sendArticleAnchor);
+     sendArticleDiv.append(sendArticleHeader);
+     sendArticleDiv.append(sendArticleAnchorImg);
+
+     $('#column1').append(sendArticleDiv);
   })
 
   // preview story modal on writecontent.html bm
