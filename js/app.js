@@ -243,5 +243,3 @@ $('#ddSO').on('click',function(){
     inputBoxContainer.append(div);
     return false;
   });
-
-});
