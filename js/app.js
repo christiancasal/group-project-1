@@ -176,9 +176,9 @@ $('#ddSO').on('click',function(){
   swal(
  'Great!',
  'You published your story!',
- 'Success'
+ 'success'
 )
-  })
+});
 
   // bm create firebase event for adding todatabase and appending onto index.html page
   fireit.on("child_added", function(childSnapshot, prevChildKey){
