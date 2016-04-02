@@ -38,7 +38,7 @@ $(document).ready(function(){
             colorcycle();
             setInterval(colorcycle, 2000);
         }, 1000);
-}
+});
 
   //cc - declares firebase references and data placeholders
   var ref = new Firebase("https://google-login-read-people.firebaseio.com");
@@ -149,6 +149,11 @@ $('#ddSO').on('click',function(){
   // push to firebase bm
   fireit.push(db);
   //alert bm
+  swal(
+ 'Great!',
+ 'You published your story!',
+ 'Success'
+)
   })
 
   // bm create firebase event for adding todatabase and appending onto index.html page
