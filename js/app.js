@@ -149,7 +149,6 @@ $('#ddSO').on('click',function(){
   // push to firebase bm
   fireit.push(db);
   //alert bm
-  alert('You have published your story')
   })
 
   // bm create firebase event for adding todatabase and appending onto index.html page
